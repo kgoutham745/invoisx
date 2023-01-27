@@ -1,137 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Login </title>
-  <style>
-/* Import Google font - Poppins */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Login</title>
+    <style>
+      /* Import Google font - Poppins */
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-body{
-  min-height: 100vh;
-  width: 100%;
-  background: rgb(98, 25, 25);
-}
-.container{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  max-width: 430px;
-  width: 100%;
-  background: #fff;
-  border-radius: 7px;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.3);
-}
-.container .form{
-  padding: 2rem;
-}
-.form header{
-  font-size: 2rem;
-  font-weight: 500;
-  text-align: center;
-  margin-bottom: 1.5rem;
-  border-bottom: 8px rgb(98, 25, 25) solid;
-  border-radius: 5px;
-  width: 150px;
-}
- .form input{
-   height: 60px;
-   width: 100%;
-   padding: 0 15px;
-   font-size: 17px;
-   margin-bottom: 1.3rem;
-   border: 1px solid #ddd;
-   border-radius: 6px;
-   outline: none;
- }
- .form input:focus{
-   box-shadow: 0 1px 0 rgba(0,0,0,0.2);
- }
-.form input.button{
-  color: #fff;
-  background: #493b39;
-  font-size: 1.2rem;
-  font-weight: 500;
-  letter-spacing: 1px;
-  margin-top: 1.7rem;
-  cursor: pointer;
-  transition: 0.4s;
-}
-.form input.button:hover{
-  background: #5e1b0f;
-}
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+      body {
+        min-height: 100vh;
+        width: 100%;
+        background: rgb(98, 25, 25);
+      }
+      .container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 430px;
+        width: 95%;
+        background: #fff;
+        border-radius: 7px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+      }
+      .container .form {
+        padding: 2rem;
+      }
+      .form header {
+        font-size: 2rem;
+        font-weight: 500;
+        text-align: center;
+        margin-bottom: 1.5rem;
+        border-bottom: 8px rgb(98, 25, 25) solid;
+        border-radius: 5px;
+        width: 150px;
+      }
+      .form input {
+        height: 60px;
+        width: 100%;
+        padding: 0 15px;
+        font-size: 17px;
+        margin-bottom: 1.3rem;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        outline: none;
+      }
+      .form input:focus {
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+      }
+      .form input.button {
+        color: #fff;
+        background: #493b39;
+        font-size: 1.2rem;
+        font-weight: 500;
+        letter-spacing: 1px;
+        margin-top: 1.7rem;
+        cursor: pointer;
+        transition: 0.4s;
+      }
+      .form input.button:hover {
+        background: #5e1b0f;
+      }
+      #warning {
+        visibility: hidden;
+        height: 15px;
+      }
+    </style>
+  </head>
 
-
-  </style>
-</head>
-
-<body>
-  <div class="container">
-    <div class="login form">
-      <header>Login</header>
-      <form>
-        <input type="email"n id="email" placeholder="Enter your email">
-        <input type="password" id="password" placeholder="Enter your password">
-        <p class="text-center text-danger" id="warning"></p>
-        <input type="button" class="button" id="loginBtn" value="Login">
-      </form>
+  <body>
+    <div class="container">
+      <div class="login form">
+        <header>Login</header>
+        <form>
+          <input type="email" n id="email" placeholder="Enter your email" />
+          <input
+            type="password"
+            id="password"
+            placeholder="Enter your password"
+          />
+          <p class="text-center text-danger" id="warning"></p>
+          <input type="button" class="button" id="loginBtn" value="Login" />
+        </form>
+      </div>
     </div>
-  </div>
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
-    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
-    const firebaseConfig = {
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+      import {
+        getAuth,
+        signInWithEmailAndPassword,
+      } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
+
+      const firebaseConfig = {
         apiKey: "AIzaSyCuhiAVSXUbzJseqTn8V9JIrSlq_g0GzoE",
         authDomain: "eroth-consultancy.firebaseapp.com",
-        databaseURL: "https://eroth-consultancy-default-rtdb.asia-southeast1.firebasedatabase.app",
+        databaseURL:
+          "https://eroth-consultancy-default-rtdb.asia-southeast1.firebasedatabase.app",
         projectId: "eroth-consultancy",
         storageBucket: "eroth-consultancy.appspot.com",
         messagingSenderId: "682903429693",
         appId: "1:682903429693:web:26c55686d06d2e4b7c8054",
-        measurementId: "G-WL22HQMBKJ"
-    };
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    
-    async function userLogin() {
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-      await signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in 
-        let userObj = {
-          location: email.split('@')[0]
-        }
-        localStorage.setItem("invoisx", JSON.stringify(userObj));
-        console.log(userObj['location']);
-        if(userObj['location']=="admin"){
-          window.location = 'admin.html';
-        }
-        else if(userObj['location']=='finance'){
-          window.location = 'finance.html';
-        }else{
-          window.location = 'vendor.html';
-        }
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode + errorMessage);
-        document.getElementById("warning").innerHTML = "Invalid Password!";
-      });
-    }
-    document.getElementById('loginBtn').addEventListener('click',userLogin);
-  </script>
-</body>
-</html>
+        measurementId: "G-WL22HQMBKJ",
+      };
 
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+
+      async function userLogin() {
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        await signInWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            let userObj = {
+              location: email.split("@")[0],
+            };
+
+            localStorage.setItem("invoisx", JSON.stringify(userObj));
+
+            if (userObj["location"] == "admin") {
+              window.location = "admin.html";
+            } else if (userObj["location"] == "finance") {
+              window.location = "finance.html";
+            } else {
+              window.location = "vendor.html";
+            }
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+
+            document.getElementById("warning").style.visibility = "visible";
+            document.getElementById("warning").innerHTML ="Invalid UserName/Password :(";
+          });
+      }
+
+      document.getElementById("loginBtn").addEventListener("click", userLogin);
+    </script>
+  </body>
+</html>
