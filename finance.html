@@ -133,7 +133,7 @@
                             <div class="col-md-4">
                                 <div class="card-body border-top">
                                     <h5 class="card-title text-primary p-1 rounded bg-primary-subtle">Comments:</h5>
-                                    <div class="admincmtbox">
+                                    <div class="admincmtbox bg-primary-subtle p-1 rounded m-1">
                                         <h6 class="text-primary">
                                             Admin:<p class="text-center text-black" id="admcmt"></p>
                                         </h6>
@@ -266,6 +266,7 @@
 
         //paying the vendor 
         async function payInvoice() {
+            document.getElementById('launchSpinnerModal').click();
             const db = getDatabase();
             const updates = {};
             const id = document.getElementById('modalInvoiceId').value;
@@ -284,6 +285,7 @@
 
         //rejecting the invoice        
         async function rejectInvoice() {
+            document.getElementById('launchSpinnerModal').click();
             const db = getDatabase();
             const updates = {};
             const id = document.getElementById('modalInvoiceId').value;
@@ -295,6 +297,7 @@
 
         //deleting the invoice
         async function deleteInvoice() {
+            document.getElementById('launchSpinnerModal').click();
             const db = getDatabase();
             const id = document.getElementById('modalInvoiceId').value;
             const location = document.getElementById('modalInvoiceLocation').value;
