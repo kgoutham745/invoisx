@@ -6,10 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Login</title>
     <style>
-      /*importing google fonts*/
+      /* Import Google font - Poppins */
       @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 
-      /*css*/
       * {
         margin: 0;
         padding: 0;
@@ -82,7 +81,7 @@
       <div class="login form">
         <header>Login</header>
         <form>
-          <input type="email" n id="email" placeholder="Enter your email"/>
+          <input type="email" n id="email" placeholder="Enter your email" />
           <input
             type="password"
             id="password"
@@ -115,14 +114,19 @@
 
       const app = initializeApp(firebaseConfig);
       const auth = getAuth(app);
+      const userObj = JSON.parse(localStorage.getItem("invoisx"));
+      if(userObj){
+        userLogin(userObj["email"],userObj["password"],false);
+      }
 
-      async function userLogin() {
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
+
+      async function userLogin(email, password, msg) {
         await signInWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
             let userObj = {
               location: email.split("@")[0],
+              email: email,
+              password: password
             };
 
             localStorage.setItem("invoisx", JSON.stringify(userObj));
@@ -136,12 +140,16 @@
             }
           })
           .catch((error) => {
-            document.getElementById("warning").style.visibility = "visible";
-            document.getElementById("warning").innerHTML ="Invalid UserName/Password :(";
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            if(msg==true){
+              document.getElementById("warning").style.visibility = "visible";
+              document.getElementById("warning").innerHTML ="Invalid UserName/Password :(";
+            }
           });
       }
 
-      document.getElementById("loginBtn").addEventListener("click", userLogin);
+      document.getElementById("loginBtn").addEventListener("click", ()=> userLogin(document.getElementById("email").value,document.getElementById("password").value, true));
     </script>
   </body>
 </html>
