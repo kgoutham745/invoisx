@@ -43,7 +43,7 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item bg-primary-subtle px-3">
-                            <a class="nav-link active" aria-current="page" href="#">Admin</a>
+                            <a class="nav-link active" aria-current="page" href="#">Finance</a>
                         </li>
                         <li class="nav-item m-1">
                             <button class="btn btn-outline-info" id="logoutBtn">Logout</button>
@@ -278,7 +278,10 @@
 
             updates[`/${location}/` + id + '/status'] = "paid";
             updates[`/${location}/` + id + '/fincmt'] = text;
-            update(dRef(db), updates).then(()=> history.go() ).catch((error)=> console.log(error));
+            update(dRef(db), updates)
+            setTimeout(function(){
+   window.location.reload(1);
+}, 900);
             
         }
 
@@ -292,7 +295,9 @@
             const location = document.getElementById('modalInvoiceLocation').value;
             updates[`/${location}/` + id + '/status'] = "rejected";
             update(dRef(db), updates);
-            history.go();
+            setTimeout(function(){
+   window.location.reload(1);
+}, 900);
         }
 
         //deleting the invoice
@@ -302,7 +307,9 @@
             const id = document.getElementById('modalInvoiceId').value;
             const location = document.getElementById('modalInvoiceLocation').value;
             remove(dRef(db, `${location}/${id}`));
-            history.go();
+            setTimeout(function(){
+   window.location.reload(1);
+}, 900);
         }
         
 

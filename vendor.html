@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>INVOISX - Vendor</title>
+    <title>vendorView</title>
     <link rel="icon" type="image/jpg" href="/assets/images/logo.jpg">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -18,15 +18,13 @@
 
     <!-- Custom styles for this page -->
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
-    <style>
-        input[type="file"] {
-            display: none;
-        }
-    </style>
+    
+    
 </head>
 
+
 <body class="bg-light-subtle py-5">
+
     
     <nav class="navbar bg-body-tertiary shadow  fixed-top">
         <div class="container-fluid">
@@ -59,33 +57,45 @@
     </nav>
 
     <!--upload image-->
-    <div class="container-fluid mt-4 text-center">
-        <div class="card text-bg-light mb-3 shadow-lg">
+    <div class="container-fluid mt-4 text-center" >
+        <div class="card text-bg-light mb-3 shadow-lg" style="height: 31vh;">
             <div class="card-header bg-white">Upload Invoice</div>
-            <div class="card-body">
-                <p class="card-text">Take or select photo(s)</p>
-                <label class="btn btn-info">
-                    <input type="file" class="btn btn-warning" id="fileToUpload" name="fileToUpload"
-                        accept="image/png, image/jpeg, image/jpg">
-                    Choose file
-                </label>
-                <p id="fileName"></p>
-                <div>
+            <div id="msg" style="visibility: hidden;font-size: large;margin-top: 10px;">Success! Please Refresh!</div>
+            <div class="input-group mb-3" style="width: 80vw;align-self: center;margin: 25px;">
+               
+                <div class="custom-file" >
+                  <input type="file" class="custom-file-input" id="fileToUpload" name="fileToUpload" accept="image/png, image/jpeg, image/jpg" >
+                  <label class="custom-file-label" for="fileToUpload" id="fileName" style="text-align: center;">Upload Image</label>
+                </div>
+              </div>
+              <div>
+                <input type="button" class="btn btn-light border border-dark" id="uploadBtn" value="Upload" />
+            </div>
+            <div class="progress m-3" id="progressbar" style="visibility:hidden;height: 28px;" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                <div class="progress-bar progress-bar-striped" id="progressval" style="width: 10%;">10%</div>
+          </div>
+            
+            
+              
+                
+               
+               
+                <!--
+                    for testing different vendors
+                    <div>
                     <select class="btn btn-info" style="display: none;" name="location" id="location">
                         <option class="dropdown-item" value="kukatpally">kukatpally</option>
                         <option class="dropdown-item" value="tarnaka">tarnaka</option>
                         <option class="dropdown-item" value="malakpet">malakpet</option>
                     </select>
                 </div>
-                <div>
-                    <input type="button" class="btn btn-light border border-dark" id="uploadBtn" value="Upload" />
-                </div>
-                <div class="progress m-3" id="progressbar" style="display: none;" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                    <div class="progress-bar progress-bar-striped" id="progressval" style="width: 10%;">10%</div>
-                </div>
-                <div id="msg"></div>
+            -->
+               
+                
+                
+               
             </div>
-        </div>
+        
     </div>
 
 
@@ -100,18 +110,20 @@
                             Pending:0</div>
                     </div>
                     <div class="col">
-                        <div class="p-3 bg-success border border-0 rounded-2 bg-gradient text-white" id="paidN">Paid:0
-                        </div>
+                        <div class="p-3 bg-warning border border-0 rounded-2 bg-gradient text-white" id="approvedN">
+                            Approved:0</div>
                     </div>
+                   
                 </div>
                 <div class="row mt-3">
                     <div class="col">
                         <div class="p-3 bg-danger border border-0 rounded-2 bg-gradient text-white" id="rejectedN">
                             Rejected:0</div>
                     </div>
+                   
                     <div class="col">
-                        <div class="p-3 bg-warning border border-0 rounded-2 bg-gradient text-white" id="approvedN">
-                            Approved:0</div>
+                        <div class="p-3 bg-success border border-0 rounded-2 bg-gradient text-white" id="paidN">Paid:0
+                        </div>
                     </div>
                 </div>
             </div>
@@ -153,6 +165,11 @@
         </div>
     </div>
 
+    <div class="footer" style="height: 2vh;text-align: center;">
+        <p>
+            All rights reserved &copy; 2023;
+        </p>
+    </div>
 
     <!-- Button trigger modal -->
     <button type="button" style="display: none;" id="launchModal" class="btn btn-primary" data-bs-toggle="modal"
@@ -175,7 +192,7 @@
                             <div class="col-md-8">
                                 <img src="" id="modalImg" class="img-fluid rounded-start">
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4" >
                                 <div class="card-body">
                                     <h5 class="card-title text-primary p-1 rounded bg-primary-subtle">Comments:</h5>
                                     <div class="admincmtbox bg-primary-subtle p-1 rounded m-1">
@@ -204,6 +221,29 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <button type="button" class="btn btn-primary" style="display: none;" id="launchSpinnerModal" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+    </button>
+    
+    <!-- spinner modal -->
+    <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">Please Wait!</h1>
+          </div>
+          <div class="modal-body text-center">
+              <!-- loading spinner -->
+              <button class="btn btn-primary" type="button">
+                  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                  Loading...
+                </button>
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div>
+      </div>
     </div>
 
     <script type="module">
@@ -244,6 +284,7 @@
         var files = [];
         var reader = new FileReader();
         var input = document.getElementById('fileToUpload');
+     
         input.onchange = e => {
             files = e.target.files;
             reader.readAsDataURL(files[0]);
@@ -251,12 +292,12 @@
         }
 
         // const location = document.getElementById("location").value;
-        console.log(location);
+        //console.log(location);
         async function UploadProcess() {
             if (files.length == 0) {
                 return;
             }
-            proglab.style.display = 'flex';
+            proglab.style.visibility='visible'
             var ImgToUpload = files[0];
             const storage = getStorage();
             var date = new Date().toString();
@@ -275,7 +316,7 @@
                     var dataContains = "";
                     var fd = new FormData();
                     fd.append('file', files[0]);
-                    document.getElementById('msg').innerHTML = "OCR scanning please wait!";
+                    //document.getElementById('msg').innerHTML = "OCR scanning please wait!";
                     // await fetch("http://192.168.1.10:5000/img", { method: "post", body: fd })
                     //     .then(res => res.json())
                     //     .then(json => {
@@ -306,8 +347,12 @@
                         
                         update(dRef(db), updates);
                     });
-                    document.getElementById('msg').innerHTML = "Success! Please Refresh!";
-                    history.go();
+                    document.getElementById('msg').style.visibility = "visible";
+
+                    setTimeout(function(){
+                     window.location.reload(1);
+}, 900);
+                    
                 });
         }
         uploadBtn.onclick = UploadProcess;
@@ -324,7 +369,7 @@
                         const status=`${invoiceObj.status}`;
                         const fincmt=`${invoiceObj.fincmt}`;
                         const admcmt=`${invoiceObj.admcmt}`;
-                        console.log(invoiceObj.key)
+                     //  console.log(invoiceObj.key)
                         document.getElementById('modalInvoiceId').value=`${invoiceObj.key}`;
                         document.getElementById('modalInvoiceLocation').value=`${invoiceObj.location}`;
                     if (invoiceObj.status == 'approved') {
@@ -355,13 +400,16 @@
         });
 
         async function deleteInvoice() {
+            
+            document.getElementById('launchSpinnerModal').click();
+
             const db = getDatabase();
             const id = document.getElementById('modalInvoiceId').value;
             const location = document.getElementById('modalInvoiceLocation').value;
            remove(dRef(db, `${location}/${id}`));
-            console.log(`${location}/${id}`);
-           
-            history.go();
+           setTimeout(function(){
+   window.location.reload(1);
+}, 900);
         }
         
 
@@ -372,6 +420,7 @@
             var table = $('#dataTable').DataTable();
             table.row.add([a, b, c, d]).draw();
         }
+
         document.getElementById('deleteBtn').onclick = deleteInvoice; 
         /*logout listner*/
         document.getElementById('logoutBtn').addEventListener('click', () => {
