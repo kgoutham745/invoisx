@@ -268,11 +268,13 @@
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const userObj = JSON.parse(localStorage.getItem("invoisx"));
-        const location = userObj["location"];
         const locations = ['kukatpally', 'tarnaka', 'malakpet'];
         if (userObj) {
             userLogin(userObj["email"], userObj["password"], false);
+        }else{
+            window.location = 'index.html';
         }
+        const location = userObj["location"];
 
         async function userLogin(email, password, msg) {
             await signInWithEmailAndPassword(auth, email, password)
@@ -289,8 +291,9 @@
                         window.location = "admin.html";
                     } else if (userObj["location"] == "finance") {
                         window.location = "finance.html";
+                    }else{   
+                        document.getElementById('body').style.visibility = 'visible';
                     }
-                    document.getElementById('body').style.visibility = 'visible';
                 })
                 .catch((error) => {
                     window.location = "index.html";

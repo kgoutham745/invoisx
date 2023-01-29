@@ -232,6 +232,8 @@
         const userObj = JSON.parse(localStorage.getItem("invoisx"));
         if (userObj) {
             userLogin(userObj["email"], userObj["password"], false);
+        }else{
+            window.location = 'index.html';
         }
 
         async function userLogin(email, password, msg) {
@@ -249,8 +251,10 @@
                         window.location = "finance.html";
                     } else if (userObj["location"] != "admin") {
                         window.location = "vendor.html";
+                    }else{
+
+                        document.getElementById("body").style.visibility = 'visible';
                     }
-                    document.getElementById("body").style.visibility = 'visible';
                 })
                 .catch((error) => {
                     window.location = "index.html";

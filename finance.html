@@ -110,6 +110,12 @@
         </div>
     </div>
 
+    <div class="footer" style="height: 2vh;text-align: center;">
+        <p>
+            All rights reserved &copy; 2023;
+        </p>
+    </div>
+
     <!-- Button trigger modal -->
     <button type="button" style="display: none;" id="launchModal" class="btn btn-primary" data-bs-toggle="modal"
         data-bs-target="#staticBackdrop">
@@ -206,6 +212,8 @@
         const userObj = JSON.parse(localStorage.getItem("invoisx"));
         if (userObj) {
             userLogin(userObj["email"], userObj["password"], false);
+        }else{
+            window.location = 'index.html';
         }
 
         async function userLogin(email, password, msg) {
@@ -223,8 +231,10 @@
                         window.location = "admin.html";
                     } else if (userObj["location"] != "finance") {
                         window.location = "vendor.html";
+                    }else{
+
+                        document.getElementById("body").style.visibility = 'visible';
                     }
-                    document.getElementById("body").style.visibility = 'visible';
                 })
                 .catch((error) => {
                     window.location = "index.html";
