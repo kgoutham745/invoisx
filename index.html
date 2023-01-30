@@ -77,7 +77,7 @@
     </style>
   </head>
 
-  <body>
+  <body id="body" style="display: none;">
     <div class="container">
       <div class="login form">
         <header>Login</header>
@@ -118,6 +118,8 @@
       const userObj = JSON.parse(localStorage.getItem("invoisx"));
       if(userObj){
         userLogin(userObj["email"],userObj["password"],false);
+      }else{
+        document.getElementById("body").style.display = "block";
       }
 
 
@@ -147,6 +149,7 @@
               document.getElementById("warning").style.visibility = "visible";
               document.getElementById("warning").innerHTML ="Invalid UserName/Password :(";
             }
+            document.getElementById("body").style.display = "block";
           });
       }
 
