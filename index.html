@@ -76,7 +76,7 @@
       }
     </style>
   </head>
-
+  
   <body id="body" style="display: none;">
     <div class="container">
       <div class="login form">
@@ -100,6 +100,7 @@
         getAuth,
         signInWithEmailAndPassword,
       } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
+      import { getDatabase, ref as dRef, update } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
 
       const firebaseConfig = {
         apiKey: "AIzaSyCuhiAVSXUbzJseqTn8V9JIrSlq_g0GzoE",
@@ -129,22 +130,30 @@
             let userObj = {
               location: email.split("@")[0],
               email: email,
-              password: password
+              password: password,
+              lastLogin: new Date().toString().split('GMT')[0]
             };
-
             localStorage.setItem("invoisx", JSON.stringify(userObj));
+            const updates = {};
+            const db = getDatabase();
+            updates[`logs/${userObj['location']}/lastLogin`] = userObj['lastLogin'];
+            updates[`logs/${userObj['location']}/active`] = 'true';
 
-            if (userObj["location"] == "admin") {
-              window.location = "admin.html";
-            } else if (userObj["location"] == "finance") {
-              window.location = "finance.html";
-            } else {
-              window.location = "vendor.html";
-            }
+            update(dRef(db), updates).then(()=>{
+              if (userObj["location"] == "admin") {
+                window.location = "admin.html";
+              } else if (userObj["location"] == "finance") {
+                window.location = "finance.html";
+              } else {
+                window.location = "vendor.html";
+              }
+            });
+
           })
           .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
+            console.log(errorMessage);
             if(msg==true){
               document.getElementById("warning").style.visibility = "visible";
               document.getElementById("warning").innerHTML ="Invalid UserName/Password :(";

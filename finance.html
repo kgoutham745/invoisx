@@ -6,28 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>INVOISX - Finance</title>
     <link rel="icon" type="image/jpg" href="/assets/images/logo.jpg">
+    <!--unicons css <icons used>-->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <!-- bootstrap icons  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <!--Bootstrap cdn link-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!--Google fonts-->
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-
     <!-- Custom styles for this template -->
-    <!-- <link href="css/sb-admin-2.min.css" rel="stylesheet"> -->
     <link href="css/sb-admin-2.css" rel="stylesheet">
-
     <!-- Custom styles for this page -->
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
+    <!--css-->
+    <style>
+        /*Invoice detials css*/
+        .left {
+            text-align: right;
+        }
+        .right {
+            text-align: left;
+            font-weight: bold;
+            padding-left: 10px;
+        }
+    </style>
 </head>
 
 <body class="bg-light-subtle py-5" id="body" style="visibility: hidden;">
 
-    <!--navbar-->
+    <!--navBar-->
     <nav class="navbar bg-body-tertiary shadow  fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="/assets/images/logo.jpg" alt="Logo" width="50" class="d-inline-block align-text-top">
+                <img src="assets/images/logo.jpg" alt="Logo" width="50" class="d-inline-block align-text-top">
                 INVOISX
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
@@ -40,11 +54,102 @@
                     <h5 class="offcanvas-title text-primary" id="offcanvasNavbarLabel">INVOISX</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
+
+                <!--profile code comes here-->
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        <li class="nav-item bg-primary-subtle px-3">
-                            <a class="nav-link active" aria-current="page" href="#">Finance</a>
-                        </li>
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <!-- home tab -->
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                        Finance
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse bg-light-subtle"
+                                    aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <a class="nav-link active text-info" aria-current="page" href="#">Dashboard</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- profile card -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        Profile
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <li class="nav-item p-3 rounded border shadow-lg bg-white">
+                                            <div class="text-center">
+                                                <img src="assets/images/pic2.jpg" class="rounded-circle"
+                                                    alt="Cinque Terre" width="100">
+                                                <h4 id="profileName"> Kiran Acharya</h4>
+                                            </div>
+                                            <div class="">
+                                                <i style="font-size: 20px;" class="bi bi-envelope m-2"></i>
+                                                <p id="profileEmail">kiranacharya@gmail.com</p>
+                                            </div>
+                                            <div class="">
+                                                <i style="font-size: 20px;" class="bi bi-telephone m-2"></i>
+                                                <p id="profilePhone">+917623998725</p>
+                                            </div>
+                                            <div class="">
+                                                <i style="font-size: 20px;" class="bi bi-geo-alt m-2"></i>
+                                                <p id="profileLocation">Hyderabad</p>
+                                            </div>
+                                            <div class="text-center">
+                                                <!-- change password  -->
+                                                <div class="accordion" id="accordionExampleInside">
+                                                    <div class="accordion-item border-0">
+                                                        <h2 class="accordion-header" id="headingInside">
+                                                            <button class="btn btn-outline-dark" type="button"
+                                                                data-bs-toggle="collapse"
+                                                                data-bs-target="#collapseInside" aria-expanded="true"
+                                                                aria-controls="collapseInside">
+                                                                Change password
+                                                            </button>
+                                                        </h2>
+                                                        <div id="collapseInside" class="accordion-collapse collapse"
+                                                            aria-labelledby="headingInside"
+                                                            data-bs-parent="#accordionExampleInside">
+                                                            <div class="accordion-body">
+                                                                <form id="changePasswordForm">
+                                                                    <!--Old password-->
+                                                                    <div class="form-floating mb-3 shadow">
+                                                                        <input type="password" class="form-control"
+                                                                            id="oldPassword" placeholder="Password">
+                                                                        <label for="oldPassword">Old
+                                                                            Password</label>
+                                                                    </div>
+                                                                    <!--New password-->
+                                                                    <div class="form-floating mb-3 shadow">
+                                                                        <input type="password" class="form-control"
+                                                                            id="newPassword" placeholder="Password">
+                                                                        <label for="newPassword">New
+                                                                            Password</label>
+                                                                    </div>
+                                                                    <button type="button" id="changePasswordBtn"
+                                                                        class="btn btn-primary">Proceed</button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- logout button  -->
                         <li class="nav-item m-1">
                             <button class="btn btn-outline-info" id="logoutBtn">Logout</button>
                         </li>
@@ -53,24 +158,31 @@
             </div>
         </div>
     </nav>
-
-    <!--card showing numbers-->
+    <!--numbers-->
     <div class="container-fluid mt-4 text-center">
         <div class="card text-bg-light mb-3 shadow-lg">
             <div class="card-body">
                 <div class="row">
+
                     <div class="col">
-                        <div class="p-3 bg-success border border-0 rounded-2 bg-gradient text-white" id="paidN" onclick="customSearch(this)" style="cursor: pointer;">Paid:0</div>
+                        <div class="p-3 bg-warning border border-0 rounded-2 bg-gradient text-white" id="Approved"
+                            onclick="customSearch(this)" style="cursor: pointer;">
+                            Approved:0
+                        </div>
                     </div>
                     <div class="col">
-                        <div class="p-3 bg-warning border border-0 rounded-2 bg-gradient text-white" id="approvedN" onclick="customSearch(this)" style="cursor: pointer;">Approved:0</div>
+                        <div class="p-3 bg-success border border-0 rounded-2 bg-gradient text-white" id="Paid"
+                            onclick="customSearch(this)" style="cursor: pointer;">
+                            Paid:0
+                        </div>
                     </div>
+
                 </div>
+
             </div>
         </div>
     </div>
-
-    <!--records from database-->
+    <!--List of Invoices from fireBase-->
     <div class="container-fluid">
         <!-- DataTales Example -->
         <div class="card shadow-lg mb-4">
@@ -83,7 +195,9 @@
                         <thead>
                             <tr>
                                 <th>Date</th>
+                                <th>Id</th>
                                 <th>Status</th>
+                                <th>Amount</th>
                                 <th>Location</th>
                                 <th>Actions</th>
                             </tr>
@@ -91,37 +205,33 @@
                         <tfoot>
                             <tr>
                                 <th>Date</th>
+                                <th>Id</th>
                                 <th>Status</th>
+                                <th>Amount</th>
                                 <th>Location</th>
                                 <th>Actions</th>
                             </tr>
                         </tfoot>
-                        <tbody id="invoicesList">
-                            <!-- <tr>
-                                <td>Date</td>
-                                <td>Status</td>
-                                <td>Location</td>
-                                <td>Action</td>
-                            </tr> -->
-                        </tbody>
+                        <tbody></tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
-
+    <!--Page Footer-->
     <div class="footer" style="height: 2vh;text-align: center;">
         <p>
-            All rights reserved &copy; 2023;
+            All rights reserved &copy; 2023.
         </p>
     </div>
 
-    <!-- Button trigger modal -->
+    <!--Triggers and Modals-->
+    <!--Open invoice(open) Button trigger modal -->
     <button type="button" style="display: none;" id="launchModal" class="btn btn-primary" data-bs-toggle="modal"
         data-bs-target="#staticBackdrop">
     </button>
 
-    <!-- Modal -->
+    <!--Open Invoice Modal -->
     <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered modal-fullscreen-xl-down modal-dialog-scrollable">
@@ -130,68 +240,149 @@
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Invoice</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <div class="card mb-3">
-                        <div class="row g-0">
-                            <div class="col-md-8">
-                                <img src="" id="modalImg" class="img-fluid rounded-start">
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card-body border-top">
-                                    <h5 class="card-title text-primary p-1 rounded bg-primary-subtle">Comments:</h5>
-                                    <div class="admincmtbox bg-primary-subtle p-1 rounded m-1">
-                                        <h6 class="text-primary">
-                                            Admin:<p class="text-center text-black" id="admcmt"></p>
-                                        </h6>
-                                    </div>
-                                    <div id="fincmtbox" class="bg-primary-subtle p-1 rounded m-1">
-                                        <h6 class="text-primary">
-                                            Financer:<p class="text-center text-black" id="fincmt"></p>
-                                        </h6>
-                                        <textarea class="form-control" id="cmtbox" rows="3"></textarea>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="modal-body p-3">
+                    <div class="row g-0">
+
+                        <div class="col-md-8">
+                            <img src="" id="modalImg" class="img-fluid rounded-start">
                         </div>
+
+                        <div class="col-md-4 my-1 text-center border rounded shadow bg-light-subtle">
+                            <div class="card-header bg-light-subtle">
+                                <h6 class="m-0 font-weight-bold">Invoice Details:</h6>
+                            </div>
+                            
+                            <table align="center">
+                                <tr>
+                                    <td class="left">Invoice Number</td>
+                                    <td class="right text-black" id="invoiceNo"></td>
+                                </tr>
+
+                                <tr>
+                                    <td class="left">Status</td>
+                                    <td class="right text-primary" id="status"></td>
+                                </tr>
+
+                                <tr>
+                                    <td class="left">Manager Name</td>
+                                    <td class="right text-danger" id="managerName"></td>
+                                </tr>
+
+                                <tr>
+                                    <td class="left">Vendor Name</td>
+                                    <td class="right text-danger" id="vendorName"></td>
+                                </tr>
+
+                                <tr>
+                                    <td class="left">Invoice Date</td>
+                                    <td class="right text-info" id="invoiceDate"></td>
+                                </tr>
+
+                                <tr>
+                                    <td class="left">uploaded Date</td>
+                                    <td class="right text-info" id="invoiceUploadDate"></td>
+                                </tr>
+
+                                <tr id="adminBox1">
+                                    <td class="left" id="approvedByTag">Approved By</td>
+                                    <td class="right text-warning" id="adminName"></td>
+                                </tr>
+
+                                <tr id="adminBox2">
+                                    <td class="left" id="approvedDateTag">Approved Date</td>
+                                    <td class="right text-warning" id="approvedDate"></td>
+                                </tr>
+                                <tr id="financeBox1">
+                                    <td class="left">Paid By</td>
+                                    <td class="right text-success" id="financerName"></td>
+                                </tr>
+                                <tr id="financeBox2" class="border-bottom">
+                                    <td class="left">Paid Date</td>
+                                    <td class="right text-success" id="paidDate"></td>
+                                </tr>
+
+                                <tr class="border-bottom">
+                                    <td class="left">Amount</td>
+                                    <td class="right text-success" id="amountInvoice"></td>
+                                </tr>
+
+                                <!-- <hr> -->
+                                <tr>
+                                    <td class="left">Admin Remarks</td>
+                                    <td class="right" id="adminRemarks"></td>
+                                </tr>
+                                <tr class="border-bottom">
+                                    <td class="left">Finance Remarks</td>
+                                    <td class="right" id="financeRemarks"></td>
+                                </tr>
+                            </table>
+
+                            <div class="form-floating m-3 mx-4 shadow" id="commentBox">
+                                <input type="text" class="form-control" placeholder="Add Comment" id="commentText">
+                                <label for="floatingname">Add Comment</label>
+                            </div>
+
+                        </div>
+
                     </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-outline-secondary" id="deleteBtn">Delete</button>
-                <button type="button" class="btn btn-danger" id="rejectBtn">Reject</button>
-                <button type="button" class="btn btn-success" id="approveBtn">Pay</button>
-                <input style="display:none" ; value="" id="modalInvoiceId"></input>
-                <input style="display:none" ; value="" id="modalInvoiceLocation"></input>
-                <input style="display:none" ; value="" id="modalInvoiceStatus"></input>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <!--delete invoice feature in updates-->
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <!--<button type="button" class="btn btn-outline-secondary" id="deleteBtn">Delete</button>-->
+                    <button type="button" class="btn btn-danger" id="rejectBtn">Reject</button>
+                    <button type="button" class="btn btn-success" id="approveBtn">Pay</button>
+                    <input style="display:none" ; value="" id="modalInvoiceId"></input>
+                    <input style="display:none" ; value="" id="modalInvoiceLocation"></input>
+                    <input style="display:none" ; value="" id="modalInvoiceStatus"></input>
+                </div>
             </div>
         </div>
     </div>
+    </div>
 
-    <button type="button" class="btn btn-primary" style="display: none;" id="launchSpinnerModal" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+    <!--spinner triggering button-->
+    <button type="button" class="btn btn-primary" style="display: none;" id="launchSpinnerModal" data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop2">
     </button>
-    
+
     <!-- spinner modal -->
-    <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="staticBackdropLabel">Please Wait!</h1>
-          </div>
-          <div class="modal-body text-center">
-              <!-- loading spinner -->
-              <button class="btn btn-primary" type="button">
-                  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                  Loading...
-                </button>
-          </div>
-          <div class="modal-footer">
-          </div>
+    <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Please Wait!</h1>
+                </div>
+                <div class="modal-body text-center">
+                    <!-- loading spinner -->
+                    <button class="btn btn-primary" type="button">
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        Loading...
+                    </button>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
         </div>
-      </div>
+    </div>
+    <!-- toast message -->
+    <button type="button" class="btn btn-primary" style="display: none;" id="liveToastBtn"></button>
+
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+        <div id="liveToast" class="toast shadow-lg" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-info-subtle">
+                <img src="assets/images/logo.jpg" width="20" class="rounded me-2" alt="...">
+                <strong class="me-auto" id="toastHeading"></strong>
+                <small>just now</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body bg-info-subtle" id="toastMessage"></div>
+        </div>
     </div>
 
     <script type="module">
+
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
         import { getAuth, onAuthStateChanged, signOut, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
         import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js";
@@ -206,87 +397,114 @@
             appId: "1:682903429693:web:26c55686d06d2e4b7c8054",
             measurementId: "G-WL22HQMBKJ"
         };
+
+
+        //configuring app
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
-        const locations = ['kukatpally', 'tarnaka', 'malakpet'];
         const userObj = JSON.parse(localStorage.getItem("invoisx"));
+        const locations = ['kukatpally', 'tarnaka', 'malakpet'];
+        let financeName;
+
         if (userObj) {
             userLogin(userObj["email"], userObj["password"], false);
-        }else{
+        } else {
             window.location = 'index.html';
         }
 
+        const location = userObj["location"];
+
+
+        //user login 
         async function userLogin(email, password, msg) {
             await signInWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
                     let userObj = {
                         location: email.split("@")[0],
                         email: email,
-                        password: password
+                        password: password,
+                        lastLogin: new Date().toString().split('GMT')[0]
                     };
 
                     localStorage.setItem("invoisx", JSON.stringify(userObj));
+                    const updates = {};
+                    const db = getDatabase();
+                    updates[`logs/${userObj['location']}/lastLogin`] = userObj['lastLogin'];
+                    updates[`logs/${userObj['location']}/active`] = 'true';
 
-                    if (userObj["location"] == "admin") {
-                        window.location = "admin.html";
-                    } else if (userObj["location"] != "finance") {
-                        window.location = "vendor.html";
-                    }else{
 
-                        document.getElementById("body").style.visibility = 'visible';
-                    }
+
+                 update(dRef(db), updates).then(() => {
+                        if (userObj["location"] == "admin") {
+                            window.location = "admin.html";
+                        } else if (userObj["location"] != "finance") {
+                            window.location = "vendor.html";
+                        } else {
+                            document.getElementById('body').style.visibility = 'visible';
+                        }
+                    });
                 })
                 .catch((error) => {
                     window.location = "index.html";
+
                 });
         }
 
         const dbRef = dRef(getDatabase());
-        locations.forEach(location => {
-            get(child(dbRef, `${location}`)).then((snapshot) => {
-                if (snapshot.exists()) {
+       //populating the dataTable
+          get(child(dbRef, `/invoices/`)).then((locationSnapshot) => {
+                let location;
+                if (locationSnapshot.exists()) {
+                    // console.log();
                     const invoiceObj = {};
+                    locationSnapshot.forEach(function (snapshot){
+                        location = snapshot.key;
                     snapshot.forEach(function (childSnapshot) {
                         invoiceObj['key'] = childSnapshot.key;
+
                         childSnapshot.forEach(function (grandChildSnapshot) {
                             invoiceObj[grandChildSnapshot.key] = grandChildSnapshot.val();
                         });
-                        // `<tr>
-                        // <td style="display:none;"><input value="${invoiceObj.key}"></input></td>
-                        // <td style="display:none;"><input value="${invoiceObj.location}"></input></td>
-                        // <td style="display:none;"><input value="${invoiceObj.status}"></input></td>
-                        // <td style="display:none;"><input value="${invoiceObj.link}"></input></td>
-                        // <td>${invoiceObj.date.substring(0,16)}</td>
-                        // <td><div class="badge text-bg-${color}">${invoiceObj.status}</div></td>
-                        // <td>${invoiceObj.location}</td>
-                        // <td><button type="button" class="btn btn-primary btn-sm" onclick="openInvoice(this.parentNode.parentNode)">Details</button></td>
-                        // </tr>`
-                        
-                        const status=`${invoiceObj.status}`;
-                        const fincmt=`${invoiceObj.fincmt}`;
-                        const admcmt=`${invoiceObj.admcmt}`;
 
-                        if (invoiceObj.status == 'approved') {
-                            document.getElementById('approvedN').innerHTML = 'Approved: ' + (parseInt(document.getElementById('approvedN').innerHTML.split(':')[1]) + 1);
-                           
-                            addTableRow(`${invoiceObj.date.substring(0,16)}`,`<div class="badge text-bg-warning">${invoiceObj.status}</div>`,`${invoiceObj.location}`,`<button type="button" class="btn btn-primary btn-sm" onclick="openInvoice(this,'${status}','${fincmt}','${admcmt}')">Details</button><input style="display:none;" value="${invoiceObj.link}"><input style="display:none;" value="${invoiceObj.key}"></input><input style="display:none;" value="${invoiceObj.location}"></input>`);
-                            // document.getElementById('invoicesList').innerHTML = getInvoiceCard('warning',invoiceObj) + document.getElementById('invoicesList').innerHTML;
+                        let color;
+                        let differCard = invoiceObj.status;
+                        if(differCard=='Approved'||differCard=='Paid'){
+                        document.getElementById('modalInvoiceId').value = `${invoiceObj.key}`;
+                        document.getElementById('modalInvoiceLocation').value = `${location}`;
+                        if (invoiceObj.status == 'Approved') {
+                            color = 'warning';
                         }
-                        else if (invoiceObj.status == 'paid') {
-                           
-                            
-                            document.getElementById('paidN').innerHTML = 'Paid: ' + (parseInt(document.getElementById('paidN').innerHTML.split(':')[1]) + 1);
-                            addTableRow(`${invoiceObj.date.substring(0,16)}`,`<div class="badge text-bg-success">${invoiceObj.status}</div>`,`${invoiceObj.location}`,`<button type="button" class="btn btn-primary btn-sm" onclick="openInvoice(this,'${status}','${fincmt}','${admcmt}')">Details</button><input style="display:none;" value="${invoiceObj.link}"><input style="display:none;" value="${invoiceObj.key}"></input><input style="display:none;" value="${invoiceObj.location}"></input>`);
-                            // document.getElementById('invoicesList').innerHTML = getInvoiceCard('success',invoiceObj) + document.getElementById('invoicesList').innerHTML;
+                        else if (invoiceObj.status == 'Paid') {
+                            color = 'success'
                         }
+                        document.getElementById(`${differCard}`).innerHTML = `${differCard}` + ':' + (parseInt(document.getElementById(`${differCard}`).innerHTML.split(':')[1]) + 1);
+                        addTableRow(`${invoiceObj.uploadDate}`, `${invoiceObj.key}`, `<div class="badge text-bg-${color}">${invoiceObj.status}</div>`, `${invoiceObj.amount}`, `${location}`, `<button type="button" class="btn btn-primary btn-sm" onclick="openInvoice(this,'${encodeURIComponent(JSON.stringify(invoiceObj))}')">Open</button><input style="display:none;" value="${invoiceObj.key}"></input><input style="display:none;" value="${location}"></input>`);
+                    }
 
-                        
                     });
+                    })
                 }
+
             }).catch((error) => {
                 console.error(error);
             });
-        });
+
+        // datatable populating end 
+
+        /*adding row*/
+        function addTableRow(a, b, c, d, e, f) {
+            var table = $('#dataTable').DataTable();
+            table.row.add([a, b, c, d, e, f]).draw();
+        }
+
+        function getDate() {
+            let date = new Date();
+            let dd = String(date.getDate()).padStart(2, '0');
+            let mm = String(date.getMonth() + 1).padStart(2, '0');
+            let yyyy = date.getFullYear();
+            date = dd + '/' + mm + '/' + yyyy;
+            return date;
+        }
 
 
         //paying the vendor 
@@ -296,18 +514,17 @@
             const updates = {};
             const id = document.getElementById('modalInvoiceId').value;
             const location = document.getElementById('modalInvoiceLocation').value;
-            let text="No Comments :)"
-            if(document.getElementById('cmtbox').value.trim().length>0)
-             text=document.getElementById('cmtbox').value;
-           
 
-            updates[`/${location}/` + id + '/status'] = "paid";
-            updates[`/${location}/` + id + '/fincmt'] = text;
+            let text = "No Comments"
+            if (document.getElementById('commentText').value.trim().length > 0)
+                text = document.getElementById('commentText').value;
+
+
+            updates[`/invoices/${location}/` + id + '/status'] = "Paid";
+            updates[`/invoices/${location}/` + id + '/paidDate'] = getDate();
+            updates[`/invoices/${location}/` + id + '/financeRemarks'] = text;
             update(dRef(db), updates)
-            setTimeout(function(){
-   window.location.reload(1);
-}, 900);
-            
+            setTimeout(function () { window.location.reload(1); }, 900);
         }
 
 
@@ -318,11 +535,17 @@
             const updates = {};
             const id = document.getElementById('modalInvoiceId').value;
             const location = document.getElementById('modalInvoiceLocation').value;
-            updates[`/${location}/` + id + '/status'] = "rejected";
-            update(dRef(db), updates);
-            setTimeout(function(){
-   window.location.reload(1);
-}, 900);
+            let text = "No Comments"
+            if (document.getElementById('commentText').value.trim().length > 0)
+                text = document.getElementById('commentText').value;
+
+
+            updates[`/invoices/${location}/` + id + '/status'] = "Rejected";
+            updates[`/invoices/${location}/` + id + '/rejectDate'] = getDate();
+            updates[`/invoices/${location}/` + id + '/rejectBy'] = financeName;
+            updates[`/invoices/${location}/` + id + '/financeRemarks'] = text;
+            update(dRef(db), updates)
+            setTimeout(function () { window.location.reload(1); }, 900);
         }
 
         //deleting the invoice
@@ -331,116 +554,183 @@
             const db = getDatabase();
             const id = document.getElementById('modalInvoiceId').value;
             const location = document.getElementById('modalInvoiceLocation').value;
-            remove(dRef(db, `${location}/${id}`));
-            setTimeout(function(){
-   window.location.reload(1);
-}, 900);
+            remove(dRef(db, `/invoices/${location}/${id}`));
+            setTimeout(function () { window.location.reload(1); }, 900);
         }
-        
 
-        //event Listners        
+
+        //button event Listners        
         document.getElementById('approveBtn').onclick = payInvoice;
         document.getElementById('rejectBtn').onclick = rejectInvoice;
-        document.getElementById('deleteBtn').onclick = deleteInvoice; 
+        //  document.getElementById('deleteBtn').onclick = deleteInvoice; 
+
+        /* logout listener */
         document.getElementById('logoutBtn').addEventListener('click', () => {
             signOut(auth)
                 .then(() => {
-                    window.location = 'index.html';
+                    const userObj = JSON.parse(localStorage.getItem("invoisx"));
+                    const updates = {};
+                    const db = getDatabase();
+                    updates[`logs/${userObj['location']}/lastLogout`] = new Date().toString().split('GMT')[0];
+                    updates[`logs/${userObj['location']}/active`] = 'false';
+                    localStorage.removeItem("invoisx");
+                    update(dRef(db), updates).then(() => {
+                        window.location = 'index.html';
+                    });
                 })
                 .catch((error) => {
                     console.log(error);
                 });
         });
 
-        //getting the table row
+        //change password
+        function changePassword(oldPassword, newPassword) {
+            const user = auth.currentUser;
+            updatePassword(user, newPassword).then(() => {
+                // Update successful.
+                document.getElementById('toastHeading').innerHTML = 'Notification';
+                document.getElementById('toastMessage').innerHTML = 'Password updated successfully!';
+                document.getElementById('liveToastBtn').click();
+                document.getElementById('changePasswordForm').reset();
 
-        //not used
-        function getInvoiceCard(color, invoiceObj) {
-            return `<tr>
-                        <td style="display:none;"><input value="${invoiceObj.key}"></input></td>
-                        <td style="display:none;"><input value="${invoiceObj.location}"></input></td>
-                        <td style="display:none;"><input value="${invoiceObj.status}"></input></td>
-                        <td style="display:none;"><input value="${invoiceObj.link}"></input></td>
-                        <td>${invoiceObj.date.substring(0,16)}</td>
-                        <td><div class="badge text-bg-${color}">${invoiceObj.status}</div></td>
-                        <td>${invoiceObj.location}</td>
-                        <td><button type="button" class="btn btn-primary btn-sm" onclick="openInvoice(this.parentNode.parentNode)">Details</button></td>
-                    </tr>`;
-        }
-
-        //adding row
-        function addTableRow(a,b,c,d){
-            var table = $('#dataTable').DataTable();
-            table.row.add( [ a,b,c,d ] ).draw();
-        }
-        
-        // addTableRow(1,2,2,'<input type="text" value="hi">');
-        
-        // setTimeout(() => {
-        //     var table = $('#dataTable').DataTable();
-        //     table.row.add( [ "1","2","3","4" ] ).draw();
-        // }, 5000);
-        
-
-        //logout listner        
-        document.getElementById('logoutBtn').addEventListener('click',()=>{
-        signOut(auth)
-            .then(() => {
-                localStorage.removeItem("invoisx");
-            window.location = 'index.html';
-            })
-            .catch((error) => {
-            console.log(error);
+            }).catch((error) => {
+                // An error ocurred
+                document.getElementById('toastHeading').innerHTML = 'Error';
+                document.getElementById('toastMessage').innerHTML = error;
+                document.getElementById('liveToastBtn').click();
             });
+        }
+        document.getElementById('changePasswordBtn').addEventListener('click', () => {
+            // console.log('working');
+            document.getElementById('toastHeading').innerHTML = 'Warning';
+            if (document.getElementById('oldPassword').value == "") {
+                document.getElementById('toastMessage').innerHTML = 'Old Password cannot be empty!';
+                document.getElementById('liveToastBtn').click();
+                return;
+            }
+            if (document.getElementById('newPassword').value == "") {
+                document.getElementById('toastMessage').innerHTML = 'New Password cannot be empty!';
+                document.getElementById('liveToastBtn').click();
+                return;
+            }
+            changePassword(document.getElementById('oldPassword').value, document.getElementById('newPassword').value);
         });
-        
+        //change password end
+
+        //fetch profile details
+        function viewProfile() {
+            const userObj = JSON.parse(localStorage.getItem("invoisx"));
+            const dbRef = dRef(getDatabase());
+            // console.log(userObj);
+            get(child(dbRef, 'logs/' + userObj['location'])).then((snapshot) => {
+                let profileObj = {};
+                snapshot.forEach(function (childSnapshot) {
+                    profileObj[childSnapshot.key] = childSnapshot.val();
+                });
+
+                document.getElementById('profileName').innerHTML = profileObj['name'];
+                financeName = profileObj['name'];
+           //     document.getElementById('invoiceManagerName').innerHTML = profileObj['name'];
+                document.getElementById('profileEmail').innerHTML = profileObj['email'];
+                document.getElementById('profilePhone').innerHTML = profileObj['phone'];
+                document.getElementById('profileLocation').innerHTML = userObj['location'];
+            });
+        }
+        viewProfile();
+        //fetch profile end
+
+        //fetch admin and finance name
+        function adminFinance() {
+            get(child(dbRef, 'logs/admin/name')).then((snapshot) => {
+                document.getElementById('adminName').innerHTML = snapshot.val();
+            });
+            get(child(dbRef, 'logs/finance/name')).then((snapshot) => {
+                document.getElementById('financerName').innerHTML = snapshot.val();
+            }).catch((err) => { console.log(err) });
+        }
+        adminFinance();
+
+    
+
+
+
+
     </script>
     <script>
 
+    //trigerring toast message
+    const toastTrigger = document.getElementById('liveToastBtn')
+        const toastLiveExample = document.getElementById('liveToast')
+        if (toastTrigger) {
+            toastTrigger.addEventListener('click', () => {
+                const toast = new bootstrap.Toast(toastLiveExample)
+                toast.show()
+            })
+        }
+
         /*open invoice and ask comment if paying else show comment*/
-        function openInvoice(e,status,fincmt,admcmt) {
-           
-            const id = e.nextElementSibling.nextElementSibling.value;
-            const loc = e.nextElementSibling.nextElementSibling.nextElementSibling.value;
-            const url = e.nextElementSibling.value;
+        function openInvoice(e, invoiceObj) {
+            invoiceObj = JSON.parse(decodeURIComponent(invoiceObj))
 
-            document.getElementById('launchModal').click();
 
-        
-            document.getElementById('admcmt').innerText = `${admcmt}`
+            const url = invoiceObj.link;
+            const status = invoiceObj.status;
 
-            if (status == "paid") {
-                document.getElementById('cmtbox').style.display='none'
-                document.getElementById('rejectBtn').style.display = 'none';
-                document.getElementById('approveBtn').style.display = 'none';
-                document.getElementById('fincmt').style.display='block'
-                document.getElementById('fincmt').innerText = `${fincmt}`
+            document.getElementById('invoiceNo').innerHTML = invoiceObj['key'];
+            document.getElementById('status').innerHTML = invoiceObj['status'];
+            document.getElementById('managerName').innerHTML = invoiceObj['managerName'];
+            document.getElementById('vendorName').innerHTML = invoiceObj['vendorName'];
+            document.getElementById('invoiceDate').innerHTML = invoiceObj['invoiceDate'];
+            document.getElementById('invoiceUploadDate').innerHTML = invoiceObj['uploadDate'];
+            // document.getElementById('adminName').innerHTML = invoiceObj['approveBy'];
+            document.getElementById('approvedDate').innerHTML = invoiceObj['approveDate'];
+            // document.getElementById('financerName').innerHTML = invoiceObj['paidBy'];
+            document.getElementById('paidDate').innerHTML = invoiceObj['paidDate'];
+            document.getElementById('amountInvoice').innerHTML = invoiceObj['amount'];
+            document.getElementById('adminRemarks').innerHTML = invoiceObj['adminRemarks'];
+            document.getElementById('financeRemarks').innerHTML = invoiceObj['financeRemarks'];
 
-            } else {
-                document.getElementById('cmtbox').style.display='block'
-                document.getElementById('fincmt').style.display='none'
-                document.getElementById('rejectBtn').style.display = 'block';
-                document.getElementById('approveBtn').style.display = 'block';
+            if (status == 'Approved') {
+                document.getElementById('approveBtn').style.display = 'block'
+                document.getElementById('rejectBtn').style.display = 'block'
+                document.getElementById('commentBox').style.display = 'block';
+                document.getElementById('financeBox1').style.display = 'none';
+                document.getElementById('financeBox2').style.display = 'none';
             }
-            
+            else if (status == 'Paid') {
+                document.getElementById('approveBtn').style.display = 'none'
+                document.getElementById('rejectBtn').style.display = 'none'
+                document.getElementById('commentBox').style.display = 'none';
+                document.getElementById('financeBox1').style.display = 'table-row';
+                document.getElementById('financeBox2').style.display = 'table-row';
+            }
+
+            /*setting key and location*/
+            const id = e.nextElementSibling.value;
+            const loc = e.nextElementSibling.nextElementSibling.value;
+
+
             document.getElementById('modalInvoiceLocation').value = loc;
             document.getElementById('modalInvoiceId').value = id;
+
             document.getElementById('modalImg').src = url;
-           
-        } 
+            document.getElementById('launchModal').click();
+
+
+        }
         function customSearch(e) {
             $('#dataTable').DataTable().search(e.innerHTML.split(':')[0]).draw();
         }
-        
-    </script>
 
+    </script>
+    <!-- Bootstrap core JavaScript-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
+
 
     <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
